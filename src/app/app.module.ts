@@ -7,6 +7,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { IssuesComponent } from './issues/issues.component';
 import { IssueComponent } from './issues/issue/issue.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NewIssueFormComponent } from './new-issue-form/new-issue-form.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -14,12 +17,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     AppComponent,
     NavbarComponent,
     IssuesComponent,
-    IssueComponent
+    IssueComponent,
+    NewIssueFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
