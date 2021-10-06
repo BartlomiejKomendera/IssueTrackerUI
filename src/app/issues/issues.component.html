@@ -1,8 +1,55 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col"></div>
-        <div class="col-10">
-            <app-issue *ngFor='let issue of issues' [issue]='issue'></app-issue>
+        <div class="col-10" *ngIf="!openIssueFlag">
+            <app-issue *ngFor='let issue of issues' [issue]='issue' (click)="openIssue(issue)"></app-issue>
+        </div>
+        <div class="col-10" *ngIf="openIssueFlag">
+            <div class="card mb-2">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col"><h5>{{currentIssue.title}}</h5></div>
+                        <div class="col">
+                            <span class="float-right">
+                                <button class="btn btn-info" (click)="editIssue(currentIssue)">Edit</button>
+                                <a href="http://localhost:4200/" class="btn btn-secondary ml-2">Back</a>
+                            </span>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col"><p><b>Department</b></p></div>
+                        <div class="col"><p>{{currentIssue.department}}</p></div>
+                    </div>
+                    <div class="row border-top pt-3">
+                        <div class="col"><p><b>Severity</b></p></div>
+                        <div class="col"><p>{{currentIssue.severity}}</p></div>
+                    </div>
+                    <div class="row border-top pt-3">
+                        <div class="col"><p><b>Status</b></p></div>
+                        <div class="col"><p>{{currentIssue.status}}</p></div>
+                    </div>
+                    <div class="row border-top pt-3">
+                        <div class="col"><p><b>Created By</b></p></div>
+                        <div class="col"><p>{{currentIssue.createdBy}}</p></div>
+                    </div>
+                    <div class="row border-top pt-3">
+                        <div class="col"><p><b>Creation Date</b></p></div>
+                        <div class="col"><p>{{currentIssue.creationDate}}</p></div>
+                    </div>
+                    <div class="row border-top pt-3">
+                        <div class="col"><p><b>Description</b></p></div>
+                        <div class="col"><p>{{currentIssue.description}}</p></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    edit issue form
+                </div>
+
+            </div>
         </div>
         <div class="col"></div>
     </div>

@@ -1,5 +1,5 @@
-<div class="card mb-2">
-    <div class="card-body">
+<div class="card mb-2" (mouseover)="changeStyle=true" (mouseout)="changeStyle=false">
+    <div class="card-body" [class.element]="!changeStyle" [class.element-hover]="changeStyle">
         <h5>{{issue.title}}</h5>
     </div>
 </div>

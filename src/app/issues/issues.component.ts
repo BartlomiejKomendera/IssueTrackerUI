@@ -10,6 +10,9 @@ import { DataService } from '../service/data.service';
 export class IssuesComponent implements OnInit {
   issues!: Issue[];
   issue!: Issue;
+  openIssueFlag: boolean = false;
+  editIssueFlag: boolean = false;
+  currentIssue!: Issue;
 
   constructor(private dataService: DataService) { }
 
@@ -17,6 +20,16 @@ export class IssuesComponent implements OnInit {
     this.dataService.getIssues().subscribe(
       res => {this.issues = res}
     );
+  }
+
+  openIssue(issue: Issue){
+    this.currentIssue = issue;
+    this.openIssueFlag = true;
+  }
+
+  editIssue(issue: Issue){
+    this.currentIssue = issue;
+    this.editIssueFlag = true;
   }
 
 }

@@ -12,7 +12,7 @@ export class DataService {
   
   private headers = new HttpHeaders({
     "Content-Type": "application/json",
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMjc5NjgxMywiaWF0IjoxNjMyNzYwODEzfQ.exNfmfmrKcIKobPzijqxpU_b5T3Py18I_zSQt7MKt5w"
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzU3NTIzMSwiaWF0IjoxNjMzNTM5MjMxfQ.b5kUSvfzx4YojH45PVMQ7fqL5u39QLexlvPM_kTHvwc"
   });
 
   getIssues(): Observable<Issue[]>{

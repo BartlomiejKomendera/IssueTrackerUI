@@ -5,6 +5,6 @@ export interface Issue{
     department: string;
     status: string;
     severity: string;
-    ceratedBy: string;
+    createdBy: string;
     creationDate: string;
 }

@@ -9,6 +9,7 @@ import { Issue } from 'src/app/model/Issue';
 export class IssueComponent implements OnInit {
   @Input()
   issue!: Issue;
+  changeStyle: boolean = false;
 
   constructor() { }
 
