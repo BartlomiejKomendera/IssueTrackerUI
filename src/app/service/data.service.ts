@@ -8,11 +8,25 @@ import { Issue } from '../model/Issue';
 })
 export class DataService {
 
+  departments: string[] = ["Department 1","Department 2","Department 3","Department 4","Department 5"];
+  severities: string[] = ["Low","Medium","High"];
+  statuses: string[] = ["Open","Closed"];
+
+  getDepartments(){
+    return this.departments;
+  }
+  getSeverities(){
+    return this.severities;
+  }
+  getStatuses(){
+    return this.statuses;
+  }
+
   constructor(private http: HttpClient/*, private login: LoginService*/) { }
   
   private headers = new HttpHeaders({
     "Content-Type": "application/json",
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzU3NTIzMSwiaWF0IjoxNjMzNTM5MjMxfQ.b5kUSvfzx4YojH45PVMQ7fqL5u39QLexlvPM_kTHvwc"
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzYzNjQ3OCwiaWF0IjoxNjMzNjAwNDc4fQ.g-SEX8eTqiERRNPJhg7iYl8ZCPdurKpVT-5nEuosEKY"
   });
 
   getIssues(): Observable<Issue[]>{
@@ -27,7 +41,7 @@ export class DataService {
       err => {console.log(err)}
     );
   }
-/*
+
   updateIssue(issue: Issue){
     console.log("IssueService - updateIssue");
     this.http.put<Issue>("http://localhost:8080/edit", issue, {headers: this.headers}).subscribe(
@@ -35,7 +49,7 @@ export class DataService {
       err => {console.log(err)}
     );
   }
-
+/*
   deleteIssue(id: number){
     console.log("IssueService - deleteIssue");
     this.http.delete("http://localhost:8080/delete?id=" + id.toString(), {headers: this.headers}).subscribe(

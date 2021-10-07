@@ -9,19 +9,20 @@ import { DataService } from '../service/data.service';
 })
 export class NewIssueFormComponent implements OnInit {
 
-  departments: string[] = ["Department 1","Department 2","Department 3","Department 4","Department 5",];
+  departments: string[] = [];
   userData: any = {};
 
-  constructor(private issueService: DataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.departments = this.dataService.getDepartments();
   }
 
   submit(data: NgForm){
     this.userData = data;
     const newUser: any = {title: this.userData.title, description: this.userData.description, department: this.userData.department,
       status: this.userData.status, severity: this.userData.severity, createdBy: "admin"};
-    this.issueService.saveIssue(newUser);
+    this.dataService.saveIssue(newUser);
     location.assign("http://localhost:4200/");
   }
 
