@@ -18,6 +18,7 @@ export class IssuesComponent implements OnInit {
   departments: String[] = [];
   severities: String[] = [];
   statuses: String[] = [];
+  p: number = 1;
 
   constructor(private dataService: DataService) { }
 
@@ -31,11 +32,19 @@ export class IssuesComponent implements OnInit {
   }
 
   openIssue(issue: Issue){
+    console.log("openIssue");
+    console.log("Issue: " + issue.title);
+    /*console.log("Current Issue: " + this.currentIssue.title);*/
+    this.issue = issue;
     this.currentIssue = issue;
     this.openIssueFlag = true;
   }
 
   editIssue(issue: Issue){
+    console.log("editIssue");
+    console.log("Issue: " + issue.title);
+    console.log("Current Issue: " + this.currentIssue.title);
+    console.log("this. Issue: " + this.issue.title);
     this.currentIssue = issue;
     this.editIssueFlag = true;
   }
@@ -48,12 +57,23 @@ export class IssuesComponent implements OnInit {
 
     this.dataService.updateIssue(updatedIssue);
     this.currentIssue = updatedIssue;
+    console.log("submitIssue");
+    console.log("Updated Issue: " + updatedIssue.title);
+    console.log("Current Issue: " + this.currentIssue.title);
     this.backFromEdit();
   }
 
   backFromEdit(){
+    this.currentIssue = this.issue;
+    console.log("backFromEdit");
+    console.log("this. Issue: " + this.issue.title);
+    console.log("Current Issue: " + this.currentIssue.title);
     this.editIssueFlag = false;
     this.openIssueFlag = true;
+  }
+
+  pageChanged(p: number){
+    this.p = p;
   }
 
 }

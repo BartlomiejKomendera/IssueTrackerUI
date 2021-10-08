@@ -4,7 +4,12 @@
         <div class="col-10 bg-light p-3 rounded-lg">
             <form #newForm="ngForm" (submit)="submit(newForm.value)">
                 <div class="form-group">
-                    <label for="title">Title</label>
+                    <div class="row">
+                        <div class="col">
+                            <a href="http://localhost:4200/" class="btn btn-secondary float-right ml-2">Back</a>
+                        </div>
+                    </div>
+                    <label for="title" class="float-left">Title</label>
                     <input ngNativeValidate required ngModel name="title" type="text" class="form-control" id="title" >
                 </div>
                 <div class="form-row">

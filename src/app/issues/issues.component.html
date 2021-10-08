@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col"></div>
         <div class="col-10" *ngIf="!openIssueFlag">
-            <app-issue *ngFor='let issue of issues' [issue]='issue' (click)="openIssue(issue)"></app-issue>
+            <app-issue *ngFor='let issue of issues | paginate: { itemsPerPage: 5, currentPage: p }' [issue]='issue' (click)="openIssue(issue)"></app-issue>
+            <pagination-controls (pageChange)="pageChanged($event)" class="float-right"></pagination-controls>
         </div>
         <div class="col-10" *ngIf="openIssueFlag">
 
@@ -86,7 +87,7 @@
                             <div class="col">
                                 <span class="float-right">
                                     <button class="btn btn-success" type="submit">Save</button>
-                                    <a (click)="backFromEdit()" class="btn btn-secondary ml-2">Back</a>
+                                    <button (click)="backFromEdit()" class="btn btn-secondary ml-2">Back</button>
                                 </span>
 
                             </div>

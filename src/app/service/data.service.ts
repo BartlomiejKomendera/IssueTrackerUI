@@ -26,7 +26,7 @@ export class DataService {
   
   private headers = new HttpHeaders({
     "Content-Type": "application/json",
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzYzNjQ3OCwiaWF0IjoxNjMzNjAwNDc4fQ.g-SEX8eTqiERRNPJhg7iYl8ZCPdurKpVT-5nEuosEKY"
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzcyNTU1NSwiaWF0IjoxNjMzNjg5NTU1fQ.xOhBZ3TxSvNNh80eTiWZfuGTtFwzBeoYGoUEmKKmS5s"
   });
 
   getIssues(): Observable<Issue[]>{
