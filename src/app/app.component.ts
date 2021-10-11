@@ -6,9 +6,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  newIssueForm: any;
+  newIssueFormFlag: any;
 
   formChange(newIssueForm: boolean){
-    this.newIssueForm = newIssueForm;
+    console.log("form change function in app component");
+    console.log("before event: " + this.newIssueFormFlag);
+
+    this.newIssueFormFlag = newIssueForm;
+
+    console.log("after event: " + this.newIssueFormFlag);
   }
 }

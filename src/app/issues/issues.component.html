@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col"></div>
         <div class="col-10" *ngIf="!openIssueFlag">
-            <app-issue *ngFor='let issue of issues | paginate: { itemsPerPage: 5, currentPage: p }' [issue]='issue' (click)="openIssue(issue)"></app-issue>
+            <app-issue *ngFor='let issue of issues | paginate: { itemsPerPage: itemsNumber, currentPage: p }' [issue]='issue'
+                (click)="openIssue(issue)"></app-issue>
             <pagination-controls (pageChange)="pageChanged($event)" class="float-right"></pagination-controls>
         </div>
         <div class="col-10" *ngIf="openIssueFlag">
@@ -16,7 +17,7 @@
                         <div class="col">
                             <span class="float-right">
                                 <button class="btn btn-info" (click)="editIssue(currentIssue)">Edit</button>
-                                <a href="http://localhost:4200/" class="btn btn-secondary ml-2">Back</a>
+                                <button class="btn btn-secondary ml-2" (click)="backFromOpen()">Back</button>
                             </span>
 
                         </div>
@@ -87,8 +88,31 @@
                             <div class="col">
                                 <span class="float-right">
                                     <button class="btn btn-success" type="submit">Save</button>
-                                    <button (click)="backFromEdit()" class="btn btn-secondary ml-2">Back</button>
+                                    <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger ml-2">Delete</button>
+                                    <button class="btn btn-secondary ml-2" (click)="backFromEdit()">Back</button>
                                 </span>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" style="margin-top: 20%;">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this item?</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <button class="btn btn-success btn-block" (click)="delete()">Yes</button>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button type="button" class="btn btn-danger btn-block" data-dismiss="modal" aria-label="Close">No</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>

@@ -19,10 +19,16 @@ export class IssuesComponent implements OnInit {
   severities: String[] = [];
   statuses: String[] = [];
   p: number = 1;
+  itemsNumber!: number;
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    if(screen.height < 800){
+      this.itemsNumber = 5;
+    } else {
+      this.itemsNumber = 9;
+    }
     this.dataService.getIssues().subscribe(
       res => {this.issues = res}
     );
@@ -34,10 +40,15 @@ export class IssuesComponent implements OnInit {
   openIssue(issue: Issue){
     console.log("openIssue");
     console.log("Issue: " + issue.title);
-    /*console.log("Current Issue: " + this.currentIssue.title);*/
     this.issue = issue;
     this.currentIssue = issue;
     this.openIssueFlag = true;
+  }
+
+  backFromOpen(){
+    console.log("Back from open")
+    this.editIssueFlag = false;
+    this.openIssueFlag = false;
   }
 
   editIssue(issue: Issue){
@@ -47,6 +58,15 @@ export class IssuesComponent implements OnInit {
     console.log("this. Issue: " + this.issue.title);
     this.currentIssue = issue;
     this.editIssueFlag = true;
+  }
+
+  backFromEdit(){
+    this.currentIssue = this.issue;
+    console.log("backFromEdit");
+    console.log("this. Issue: " + this.issue.title);
+    console.log("Current Issue: " + this.currentIssue.title);
+    this.editIssueFlag = false;
+    this.openIssueFlag = true;
   }
 
   submit(data: NgForm){
@@ -63,13 +83,11 @@ export class IssuesComponent implements OnInit {
     this.backFromEdit();
   }
 
-  backFromEdit(){
-    this.currentIssue = this.issue;
-    console.log("backFromEdit");
-    console.log("this. Issue: " + this.issue.title);
-    console.log("Current Issue: " + this.currentIssue.title);
-    this.editIssueFlag = false;
-    this.openIssueFlag = true;
+  delete(){
+    console.log("delete issue");
+    console.log("current issue id: " + this.currentIssue.id);
+    this.dataService.deleteIssue(this.currentIssue.id);
+    location.reload();
   }
 
   pageChanged(p: number){

@@ -22,11 +22,11 @@ export class DataService {
     return this.statuses;
   }
 
-  constructor(private http: HttpClient/*, private login: LoginService*/) { }
+  constructor(private http: HttpClient) { }
   
   private headers = new HttpHeaders({
     "Content-Type": "application/json",
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzcyNTU1NSwiaWF0IjoxNjMzNjg5NTU1fQ.xOhBZ3TxSvNNh80eTiWZfuGTtFwzBeoYGoUEmKKmS5s"
+    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzk3ODA3MywiaWF0IjoxNjMzOTQyMDczfQ.IgKUlg-acVranP7myiPqxdLqgZgZcVzltdAfWLEIjL8"
   });
 
   getIssues(): Observable<Issue[]>{
@@ -49,12 +49,12 @@ export class DataService {
       err => {console.log(err)}
     );
   }
-/*
+
   deleteIssue(id: number){
     console.log("IssueService - deleteIssue");
     this.http.delete("http://localhost:8080/delete?id=" + id.toString(), {headers: this.headers}).subscribe(
       res => {console.log(res)},
       err => {console.log(err)}
     );
-  }*/
+  }
 }
