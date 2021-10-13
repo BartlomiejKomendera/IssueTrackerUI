@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { DataService } from '../service/data.service';
 
 @Component({

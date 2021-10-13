@@ -25,8 +25,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
   
   private headers = new HttpHeaders({
-    "Content-Type": "application/json",
-    "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYzMzk3ODA3MywiaWF0IjoxNjMzOTQyMDczfQ.IgKUlg-acVranP7myiPqxdLqgZgZcVzltdAfWLEIjL8"
+    "Content-Type": "application/json"
   });
 
   getIssues(): Observable<Issue[]>{

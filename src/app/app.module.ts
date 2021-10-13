@@ -9,7 +9,10 @@ import { IssueComponent } from './issues/issue/issue.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NewIssueFormComponent } from './new-issue-form/new-issue-form.component';
 import { FormsModule } from '@angular/forms';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AuthInterceptorService } from './service/login/interceptor';
+import { LoginComponent } from './login/login/login.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -18,7 +21,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     NavbarComponent,
     IssuesComponent,
     IssueComponent,
-    NewIssueFormComponent
+    NewIssueFormComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     NgxPaginationModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

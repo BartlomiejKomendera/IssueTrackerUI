@@ -10,7 +10,7 @@
             <form #newForm="ngForm" (submit)="submit(newForm.value)">
                 <div class="form-group">
                     <label for="title" class="float-left">Title</label>
-                    <input ngNativeValidate required ngModel name="title" type="text" class="form-control" id="title" >
+                    <input ngModel name="title" type="text" class="form-control" id="title" required>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">

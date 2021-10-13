@@ -20,4 +20,9 @@ export class NavbarComponent implements OnInit {
     this.newIssueForm.emit(true);
   }
 
+  logout(){
+    localStorage.removeItem('token');
+    location.reload();
+  }
+
 }
