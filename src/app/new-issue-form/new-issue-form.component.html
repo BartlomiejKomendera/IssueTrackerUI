@@ -9,39 +9,47 @@
             </div>
             <form #newForm="ngForm" (submit)="submit(newForm.value)">
                 <div class="form-group">
-                    <label for="title" class="float-left">Title</label>
-                    <input ngModel name="title" type="text" class="form-control" id="title" required>
+                    <label for="title" class="float-left">Title <span style="color: red;">*</span></label>
+                    <input ngModel name="title" type="text" class="form-control" id="title" required #title="ngModel">
+                    <small class="form-text text-muted" *ngIf="title.touched && !title.valid">Title is
+                        required</small>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-12">
-                        <label for="department">Department</label>
-                        <select ngModel name="department" id="department" class="form-control">
+                        <label for="department">Department <span style="color: red;">*</span></label>
+                        <select ngModel name="department" id="department" class="form-control" required #department="ngModel">
                             <option *ngFor="let department of departments">{{department}}</option>
                         </select>
+                        <small class="form-text text-muted" *ngIf="department.touched && !department.valid">Department is
+                            required</small>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="severity">Severity</label>
-                        <select ngModel name="severity" id="severity" class="form-control">
-                            <option selected>Low</option>
+                        <label for="severity">Severity <span style="color: red;">*</span></label>
+                        <select ngModel name="severity" id="severity" class="form-control" required #severity="ngModel">
+                            <option>Low</option>
                             <option>Medium</option>
                             <option>High</option>
                         </select>
+                        <small class="form-text text-muted" *ngIf="severity.touched && !severity.valid">Severity is
+                            required</small>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="status">Status</label>
-                        <select ngModel name="status" id="status" class="form-control">
-                            <option selected>Open</option>
+                        <label for="status">Status <span style="color: red;">*</span></label>
+                        <select ngModel name="status" id="status" class="form-control" required #status="ngModel">
+                            <option>Open</option>
                             <option>Closed</option>
                         </select>
+                        <small class="form-text text-muted" *ngIf="status.touched && !status.valid">Status is
+                            required</small>
                     </div>
                     <div class="form-group col-md-12">
                         <label for="description">Description</label>
                         <textarea ngModel name="description" rows="10" class="form-control" id="description"></textarea>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button [disabled]="!newForm.valid" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
         <div class="col"></div>

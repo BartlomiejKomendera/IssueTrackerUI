@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
+    <div class="col">
+      <div class="card" style="margin-top: 50%;">
+        <div class="card-body">
+          <form #loginForm="ngForm" (ngSubmit)="submit()">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input [(ngModel)]="user.username" name="username" required type="text" class="form-control" id="username"
+                aria-describedby="usernameHelp" #username="ngModel">
+              <small class="form-text text-muted" *ngIf="username.touched && !username.valid">Username is
+                required</small>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input [(ngModel)]="user.password" name="password" required type="password" class="form-control"
+                id="password" #password="ngModel">
+              <small class="form-text text-muted" *ngIf="password.touched && !password.valid">Password is
+                required</small>
+            </div>
+            <!--<button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Log In</button>-->
+            <small *ngIf="message!=''" style="color: red; float: right;">Wrong Credentials</small>
+            <button type="submit" class="btn btn-primary">Log In</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col"></div>
+  </div>
+</div>

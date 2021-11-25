@@ -1,11 +1,20 @@
 <div class="card mb-2" (mouseover)="changeStyle=true" (mouseout)="changeStyle=false">
-    <div class="card-body" [class.element]="!changeStyle" [class.element-hover]="changeStyle">
+    
+    <div class="card-body" [class.element]="!changeStyle" [class.element-hover]="changeStyle" [class.status-closed]="issue.status==='Closed'">
+        
         <div class="row">
+            
             <div class="col">
+                <div class="test" [ngStyle]="{'border-color': (issue.severity === 'Low') ? 'green' :
+(issue.severity === 'Medium') ? 'orange' :
+(issue.severity === 'High') ? 'red' : ''}"></div>
                 <h5>{{issue.title}}</h5>
             </div>
             <div class="col">
                 <small class="float-right">{{issue.status}}</small>
+                <!--<span [ngStyle]="{'color': (issue.severity === 'Low') ? 'green' :
+                                           (issue.severity === 'Medium') ? 'orange' :
+                                           (issue.severity === 'High') ? 'red' : ''}">{{issue.severity}}</span>-->
             </div>
         </div>
     </div>
